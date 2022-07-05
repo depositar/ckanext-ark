@@ -1,0 +1,58 @@
+# Chinese (Traditional, Taiwan) translations for ckanext-ark.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the ckanext-ark
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-ark 1.0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-07-05 06:28+0000\n"
+"PO-Revision-Date: 2022-06-15 01:59+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_Hant_TW\n"
+"Language-Team: zh_Hant_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ckanext/ark/plugin.py:65
+msgid "ARK identifier created"
+msgstr "ARK 識別碼已建立"
+
+#: ckanext/ark/views.py:23
+msgid "ARK not found"
+msgstr "ARK 不存在"
+
+#: ckanext/ark/templates/ark/snippets/ark.html:4
+msgid "ARK Identifier"
+msgstr "ARK 識別碼"
+
+#: ckanext/ark/templates/ark/snippets/ark.html:14
+msgid "Defunct"
+msgstr "已失效"
+
+#: ckanext/ark/templates/ark/snippets/ark.html:19
+msgid "Not Assigned"
+msgstr "未配發"
+
+#: ckanext/ark/templates/ark/snippets/defunct.html:3
+#: ckanext/ark/templates/ark/snippets/defunct.html:10
+msgid "Defunct ARK"
+msgstr "ARK 已失效"
+
+#: ckanext/ark/templates/ark/snippets/defunct.html:11
+#, python-format
+msgid "The dataset with ARK identifier: %(ark)s is not found."
+msgstr "ARK 識別碼：%(ark)s 所關聯的資料集已不存在"
+
+#: ckanext/ark/templates/ark/snippets/defunct.html:12
+#, python-format
+msgid ""
+"However, the ERC metadata is still <a href=\"%(ark_url)s?info\" "
+"target=\"_blank\">available</a>."
+msgstr "不過，您仍可取得<a href=\"%(ark_url)s?info\" target=\"_blank\">ERC 後設資料</a>"
+

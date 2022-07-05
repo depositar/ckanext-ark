@@ -1,0 +1,23 @@
+<section class="module module-narrow module-shallow ark">
+  <h2 class="module-heading">
+    <i class="fa fa-key"></i>
+    {% block ark_title %}{{ _('ARK Identifier') }}{% endblock %}
+  </h2>
+  <div class="module-content">
+    {% block ark_content %}
+      {% if c.pkg_dict.get('ark') %}
+        {% block ark_identifier %}
+          <a href="{{ c.pkg_dict.get('erc_where') }}" target="_blank">{{ c.pkg_dict.get('ark') }}</a>
+          {% if c.pkg_dict.private %}
+            <span class="dataset-private label label-inverse">
+              <i class="fa fa-unlink"></i>
+              {{ _('Defunct') }}
+            </span>
+          {% endif %}
+        {% endblock %}
+      {% else %}
+        {% block ark_missing %}{{ _('Not Assigned') }}{% endblock %}
+      {% endif %}
+    {% endblock %}
+  </div>
+</section>

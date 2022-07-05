@@ -1,0 +1,21 @@
+name: Releases
+
+on:
+  push:
+    tags:
+      - "*"
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - uses: ncipollo/release-action@v1.10.0
+        with:
+          name: Version ${{ env.TAG }}
+          body: Please see the [CHANGELOG](https://github.com/depositar/ckanext-ark/blob/${{ env.TAG }}/CHANGELOG.md).

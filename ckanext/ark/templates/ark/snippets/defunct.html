@@ -1,0 +1,20 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Defunct ARK') }}{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      {% set ark_url = url_for('ark.read', path=ark) %}
+
+      <h1>{{ _('Defunct ARK') }}</h1>
+      <p>{% trans %}The dataset with ARK identifier: {{ ark }} is not found.{% endtrans %}</p>
+      <p>{% trans %}However, the ERC metadata is still <a href="{{ ark_url }}?info" target="_blank">available</a>.{% endtrans %}</p>
+    </div>
+  </article>
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}
