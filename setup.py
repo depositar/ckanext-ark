@@ -30,7 +30,7 @@ setup(
     packages=find_namespace_packages(exclude=['ckanext.ark.tests']),
     namespace_packages=['ckanext'],
     install_requires=[
-        'noid',
+        'noid-mint'
     ],
     include_package_data=True,
     entry_points='''

@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-import noid
+from noid import pynoid as noid
 import pytest
 
 from ckanext.ark.lib.minter import Minter

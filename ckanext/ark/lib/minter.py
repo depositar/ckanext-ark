@@ -1,4 +1,4 @@
-import noid
+from noid import pynoid as noid
 from ckan.plugins import toolkit
 
 from ckanext.ark.model.crud import ARKQuery
