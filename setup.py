@@ -12,7 +12,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='ckanext-ark',
-    version='1.0.1',
+    version='1.0.2',
     description='A CKAN extension for assigning Archival Resource Key '
                 '(ARK) identifiers to datasets.',
     long_description=long_description,
