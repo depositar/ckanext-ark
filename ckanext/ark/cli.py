@@ -1,3 +1,5 @@
+import datetime
+
 import click
 from ckan import model
 from ckan.plugins import toolkit
@@ -68,6 +70,11 @@ def update_ark():
             continue
 
         ark = ARKQuery.read_package(package_id, create_if_none=True)
+
+        ARKQuery.update_ark(identifier=ark.identifier,
+                            last_modified=datetime.datetime.utcnow(),
+                            **erc_record
+                            )
 
         click.secho(
             f'Updated "{title}" with ARK identifier "{ark.identifier}"',
