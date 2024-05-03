@@ -34,7 +34,12 @@ class ArkPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     # IPackageController
 
+    # CKAN < 2.10
     def after_update(self, context, pkg_dict):
+        return self.after_dataset_update(context, pkg_dict)
+
+    # CKAN >= 2.10
+    def after_dataset_update(self, context, pkg_dict):
         '''Dataset has been created/updated. Check status of the dataset to
         determine if we should mint ARK.
         '''
@@ -71,7 +76,12 @@ class ArkPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
         return pkg_dict
 
+    # CKAN < 2.10
     def after_show(self, context, pkg_dict):
+        return self.after_dataset_show(context, pkg_dict)
+
+    # CKAN >= 2.10
+    def after_dataset_show(self, context, pkg_dict):
         '''Add the ARK details to the pkg_dict so it can be displayed.
         '''
         ark = ARKQuery.read_package(pkg_dict['id'])
