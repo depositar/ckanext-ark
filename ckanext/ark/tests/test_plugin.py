@@ -8,8 +8,15 @@ from ckan.tests import factories
 class TestPlugin(object):
     @pytest.fixture
     def user_env(self):
-        user = factories.User()
-        return {'REMOTE_USER': user['name']}
+        try:
+            # CKAM >= 2.10
+            from ckantoolkit.tests.factories import UserWithToken
+            user = UserWithToken()
+            return {'Authorization': user['token']}
+        except ImportError:
+            # CKAN < 2.10
+            user = factories.User()
+            return {'REMOTE_USER': user['name'].encode('ascii')}
 
     def test_after_update(self, app, user_env):
         response = app.post(

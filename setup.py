@@ -30,6 +30,7 @@ setup(
     packages=find_namespace_packages(exclude=['ckanext.ark.tests']),
     namespace_packages=['ckanext'],
     install_requires=[
+        'ckantoolkit',
         'noid-mint'
     ],
     include_package_data=True,

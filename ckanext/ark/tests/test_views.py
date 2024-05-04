@@ -7,12 +7,23 @@ from ckan.tests import factories, helpers
 
 @pytest.mark.usefixtures('with_ark_table')
 class TestViews(object):
+    def user_env(self):
+        try:
+            # CKAM >= 2.10
+            from ckantoolkit.tests.factories import UserWithToken
+            user = UserWithToken()
+            return {'Authorization': user['token']}
+        except ImportError:
+            # CKAN < 2.10
+            user = factories.User()
+            return {'REMOTE_USER': user['name'].encode('ascii')}
+
     def test_ark(self, app, dataset_with_ark):
         ark_url = url_for('ark.read', path=dataset_with_ark['ark'].
                           replace('ark:', ''))
-        dataset_url = url_for('dataset.read', id=dataset_with_ark['id'])
+        response = app.get(ark_url)
 
-        assert app.get(ark_url).body == app.get(dataset_url).body
+        assert helpers.body_contains(response, dataset_with_ark['id'])
 
     def test_ark_erc_info(self, app, ckan_config, dataset_with_ark):
         site_url = ckan_config['ckan.site_url']
@@ -59,12 +70,10 @@ class TestViews(object):
 
         assert 'ARK not found' in app.get(url).body
 
-    def test_deleted_dataset(self, app, dataset_with_ark):
-        user = factories.User()
-
+    def test_deleted_dataset(self, app, dataset_with_ark, user_env):
         response = app.post(
             url_for('dataset.delete', id=dataset_with_ark['name']),
-            extra_environ={'REMOTE_USER': user['name']}
+            environ_overrides=user_env
         )
         assert 200 == response.status_code
 
@@ -74,20 +83,16 @@ class TestViews(object):
         assert 'Defunct ARK' in app.get(url).body
 
     @pytest.mark.ckan_config('package_edit_return_url', None)
-    def test_private_dataset(self, app):
-        user = factories.User()
-        org = factories.Organization(user=user)
-        dataset = factories.Dataset()
-
+    def test_private_dataset(self, app, user_env):
         app.post(
-            url_for('dataset.edit', id=dataset['id']),
-            extra_environ={'REMOTE_USER': user['name']},
-            data={'title': 'new-title'}
+            url_for('organization.new'),
+            environ_overrides=user_env,
+            data={'name': 'new-org'}
         )
+        dataset = factories.Dataset(owner_org='new-org', private=True)
         app.post(
             url_for('dataset.edit', id=dataset['id']),
-            extra_environ={'REMOTE_USER': user['name']},
-            data={'owner_org': org['id'], 'private': True}
+            environ_overrides=user_env
         )
         dataset = helpers.call_action('package_show', id=dataset['id'])
 
