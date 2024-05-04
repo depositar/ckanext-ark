@@ -59,7 +59,7 @@ jobs:
       - name: Run tests
         run: pytest --ckan-ini=test.ini --cov=ckanext.ark --cov-report=xml --cov-append --disable-warnings ckanext/ark/tests
       - name: Upload coverage report to codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           files: ./coverage.xml
           token: ${{ secrets.CODECOV_TOKEN }}
