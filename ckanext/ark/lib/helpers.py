@@ -4,8 +4,8 @@ from ckan.plugins import toolkit
 
 
 def _get_nma_url():
-    '''Return the NMA URL. Try and use ckanext.ark.nma_url but if that's not set
-    use ckan.site_url.
+    '''Return the NMA URL. Try and use ckanext.ark.nma_url
+    but if that's not set use ckan.site_url.
 
     :returns: the NMA URL
     :rtype: string
