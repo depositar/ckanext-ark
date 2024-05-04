@@ -10,8 +10,8 @@ from ckanext.ark.model.crud import ARKQuery
 blueprints = Blueprint('ark', __name__)
 
 
-@blueprints.route('/ark:/<path:path>/')
-@blueprints.route('/ark:<path:path>/')
+@blueprints.route('/ark:/<path:path>', strict_slashes=False)
+@blueprints.route('/ark:<path:path>', strict_slashes=False)
 def read(path):
     # Show NAA metadata
     if path == toolkit.config.get('ckanext.ark.naan'):
@@ -22,7 +22,8 @@ def read(path):
     if not ark:
         return base.abort(404, _('ARK not found'))
     # Show ERC metadata
-    if 'info' in request.args or request.environ['REQUEST_URI'][-2:] == '/?':
+    if 'info' in request.args or \
+            request.environ['REQUEST_URI'].split('?', maxsplit=1)[-1] == '':
         response = {
             'erc': {
                 'who': ark.who,
