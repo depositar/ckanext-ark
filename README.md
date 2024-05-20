@@ -14,11 +14,11 @@ Compatibility with core CKAN versions:
 
 | CKAN version    | Compatible?   |
 | --------------- | ------------- |
-| 2.7 and earlier | no            |
-| 2.8             | not tested    |
+| 2.8 and earlier | no            |
 | 2.9             | yes           |
+| 2.10            | yes           |
 
-This extension is compatible with Python 3.7 and 3.8.
+This extension is compatible with Python 3.8, 3.9, and 3.10.
 
 ## Installation
 

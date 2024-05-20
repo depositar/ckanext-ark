@@ -12,7 +12,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='ckanext-ark',
-    version='1.0.2',
+    version='1.0.3',
     description='A CKAN extension for assigning Archival Resource Key '
                 '(ARK) identifiers to datasets.',
     long_description=long_description,
@@ -23,8 +23,9 @@ setup(
     license='MIT',
     classifiers=[
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
     ],
     keywords='CKAN ARK',
     packages=find_namespace_packages(exclude=['ckanext.ark.tests']),
