@@ -1,6 +1,11 @@
 # ckanext-ark CHANGELOG
 
 
+## v1.0.4 - 2025-03-31
+
+- Support Bootstrap 5 templates in CKAN >= 2.10
+- Use the latest images for testing
+
 ## v1.0.3 - 2024-05-20
 
 - Support CKAN 2.10

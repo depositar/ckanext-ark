@@ -3,6 +3,7 @@
 [![Codecov](https://codecov.io/gh/depositar/ckanext-ark/branch/main/graph/badge.svg)](https://codecov.io/gh/depositar/ckanext-ark)
 [![Python](https://img.shields.io/pypi/pyversions/ckanext-ark)](https://pypi.org/project/ckanext-ark)
 [![CKAN](https://img.shields.io/badge/ckan-2.9-orange.svg)](https://github.com/ckan/ckan)
+[![CKAN](https://img.shields.io/badge/ckan-2.10-orange.svg)](https://github.com/ckan/ckan)
 
 # ckanext-ark
 
