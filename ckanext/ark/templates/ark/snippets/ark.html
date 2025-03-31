@@ -9,7 +9,7 @@
         {% block ark_identifier %}
           <a href="{{ c.pkg_dict.get('erc_where') }}" target="_blank">{{ c.pkg_dict.get('ark') }}</a>
           {% if c.pkg_dict.private %}
-            <span class="dataset-private label label-inverse">
+            <span class="dataset-private badge badge-inverse">
               <i class="fa fa-unlink"></i>
               {{ _('Defunct') }}
             </span>
